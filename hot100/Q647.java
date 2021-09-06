@@ -6,7 +6,8 @@ package hot100;
 具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。
  */
 
- //中心扩展法找回文
+ //中心扩展法找回文，可添加分隔符防止出现奇偶两种情况
+ //马拉车算法等
 class Solution {
     public int countSubstrings(String s) {
         int n = s.length();

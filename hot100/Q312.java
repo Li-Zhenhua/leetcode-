@@ -18,7 +18,7 @@ import java.util.TreeMap;
  //要用动态规划，好像数学的方法不行orz
  //dp[i][j] 表示开区间 (i,j) 内你能拿到的最多金币
  //假设最后一个戳破的气球的索引为k，则dp[i][j]可以由 dp[i][k] 和 dp[k][j] 进行转移
- //total = dp[i][k] + val[i] * val[k] * val[j] + dp[k][j]
+ //dp[i][j] = max(dp[i][k] + val[i] * val[k] * val[j] + dp[k][j])遍历k
  //最终要得到结果为dp[0][n+1]
 class Solution {
     public int maxCoins(int[] nums) {
@@ -31,10 +31,19 @@ class Solution {
         for (int i = 1; i <= n; i++) {
             numsExpand[i] = nums[i-1];
         }
-        
-        for (int i = 0; i < numsExpand.length; i++) {
-            
+
+        //由转移方程可以看出，需要k左右两边的dp都已经算好了
+        //故需要从后往前转移，注意一下顺序问题
+        for (int i = n-1; i >= 0; i--) {
+            for (int j = i+2; j < n+2; j++) {
+                for (int k = i+1; k < j; k++) {
+                    int temp = dp[i][k] + numsExpand[i] * numsExpand[k] * numsExpand[j] + dp[k][j];
+                    dp[i][j] = Math.max(dp[i][j], temp);
+                }
+            }
         }
+
+        return dp[0][n+1];
     }
 }
 
