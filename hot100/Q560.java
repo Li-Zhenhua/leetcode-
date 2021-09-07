@@ -38,6 +38,7 @@ class Solution {
         //初始条件，即key=0时表示nums[i]=k
         map.put(0, 1);
         if(nums[0] == k) ans++;
+        //注意这里nums[0]与k均有可能为0，导致put的时候应该在上述初始值1的基础上加1
         map.put(nums[0], map.getOrDefault(nums[0], 0)+1);
         for (int i = 1; i < n; i++) {
             nums[i] += nums[i-1];
