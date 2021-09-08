@@ -54,6 +54,7 @@ class Solution {
         }
         dp[0][nums[0]] = true;
 
+        //可以进一步化成一维形式
         for (int i = 1; i < n; i++) {
             for (int j = 1; j <= halfSum; j++) {
                 if(j < nums[i]){
