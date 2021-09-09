@@ -20,7 +20,7 @@ import java.util.List;
 
  */
 
- //官方写法，自己写的真是又臭又长
+ //官方写法，自己写的方法真是又臭又长
 class Solution {
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> ans = new ArrayList<String>();
