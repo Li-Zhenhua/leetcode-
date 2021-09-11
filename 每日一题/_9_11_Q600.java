@@ -15,7 +15,7 @@ class Solution {
             f[i] = f[i-1] + f[i-2];
         }
         //从最高位开始计算，n最大为10^9
-        int index = 30;
+        int index = 31;
         boolean preBit = false;
         while(index >= 0){
             if((n & (1 << index)) != 0){
