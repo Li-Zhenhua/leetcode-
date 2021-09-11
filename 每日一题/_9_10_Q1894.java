@@ -20,11 +20,19 @@ class Solution {
     public int chalkReplacer(int[] chalk, int k) {
         int n = chalk.length;
         //int最大值是2047483647，也就约等于是2*10^9
-        long sum = 0;
+        //long sum = 0;
+        
+        //如果不用long时
+        int sum = 0;
+        int remain = 0;
         for (int i = 0; i < n; i++) {
             sum += chalk[i];
+            if(sum > k){
+                remain = -1;
+                break;
+            }
         }
-        long remain = k % sum;
+        remain = remain == 0 ? k % sum : k;
         for (int i = 0; i < n; i++) {
             if(remain < chalk[i]) return i;
             else{
