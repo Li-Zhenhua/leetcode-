@@ -37,14 +37,18 @@ class Solution {
                 int x = point1[0] - point2[0];
                 int y = point1[1] - point2[1];
                 int dis = x*x + y*y;
+                //因为i=j时dis=0，个数一定为0，故不用再判断
                 map.put(dis, map.getOrDefault(dis, 0)+1);
-            }  
+            } 
+            //每一行dis相同的个数 
             for (Integer key : map.keySet()) {
                 int num = map.get(key);
-                if(num >= 2){
+                //因为num=1时所加的项乘积为0，也可以不用判断
+                /*if(num >= 2){
                     //排列数 An2
                     ans += num * (num-1);
-                }
+                }*/
+                ans += num * (num-1);
             }
         }
         return ans;
