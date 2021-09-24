@@ -19,7 +19,7 @@ class Solution {
                 if(c1 == c2){
                     dp[i][j] = dp[i-1][j-1] + 1;
                 }else{
-                    //dp[i-1][j-1]必然不大于下面两个值中的较大值
+                    //dp[i-1][j-1]必然不大于下面两个值中的较大值,所以可以不用管
                     dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
                 }
             } 
